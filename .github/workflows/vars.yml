@@ -26,3 +26,13 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:fake
+      
+      - name: executing remote ssh commands restart service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /srv/netomerch/backend
+            echo DB_NAME=${{ github.token }} > .env
