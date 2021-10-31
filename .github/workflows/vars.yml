@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print
-        run: echo "${{ fromJson(github) }}" 
+        run: echo "$GITHUB_CONTEXT"
