@@ -1,0 +1,12 @@
+name: demo-vars
+
+on:
+  push:
+    branches: [ artrey-vars ]
+
+jobs:
+  vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: echo "${{ github }}"
