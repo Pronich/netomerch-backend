@@ -8,5 +8,7 @@ jobs:
   vars:
     runs-on: ubuntu-latest
     steps:
-      - name: print
+      - name: print        
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
