@@ -13,6 +13,11 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       
+      - name: print secrets        
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(secrets) }}
+        run: echo "$GITHUB_CONTEXT"
+      
       - name: Login to ghcr.io
         uses: docker/login-action@v1
         with:
