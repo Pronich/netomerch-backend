@@ -28,11 +28,11 @@ jobs:
             ghcr.io/${{ github.repository }}:fake
 
   deploy:
-    runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'master' && 'prod' || github.ref_name }}
+    if: ${{ github.ref_name == 'dev' || github.ref_name == 'master' }}
     needs:
       - vars
-    if: ${{ github.ref_name == 'dev' || github.ref_name == 'master' }}
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'master' && 'prod' || github.ref_name }}
     steps:      
       - name: print secrets
         env:
