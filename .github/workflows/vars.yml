@@ -30,6 +30,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: dev
+    needs:
+      - vars
+    if: ${{ github.ref_name == 'dev' }}
     steps:      
       - name: print secrets
         env:
