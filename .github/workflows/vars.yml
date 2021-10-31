@@ -29,10 +29,10 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ github.ref_name == 'master' && 'prod' || github.ref_name }}
     needs:
       - vars
-    if: ${{ github.ref_name == 'dev' }}
+    if: ${{ github.ref_name == 'dev' || github.ref_name == 'master' }}
     steps:      
       - name: print secrets
         env:
