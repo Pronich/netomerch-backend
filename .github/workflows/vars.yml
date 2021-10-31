@@ -35,4 +35,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /srv/netomerch/backend
-            echo DB_NAME=${{ github.token }} > .env
+            echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} > .env
