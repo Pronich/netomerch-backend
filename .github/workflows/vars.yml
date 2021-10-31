@@ -17,8 +17,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ guthub.actor }}
-          password: ${{ guthub.token }}
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
 
       - name: Build and push
         uses: docker/build-push-action@v2
