@@ -7,6 +7,7 @@ on:
 jobs:
   vars:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: print        
         env:
@@ -14,7 +15,6 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       
       - name: print secrets
-        environment: dev
         env:
           GITHUB_CONTEXT: ${{ toJSON(secrets) }}
         run: echo "$GITHUB_CONTEXT"
@@ -34,7 +34,6 @@ jobs:
             ghcr.io/${{ github.repository }}:fake
       
       - name: executing remote ssh commands restart service
-        environment: dev
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_SERVER }}
