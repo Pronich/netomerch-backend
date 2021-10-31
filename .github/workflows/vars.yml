@@ -13,7 +13,8 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
       
-      - name: print secrets        
+      - name: print secrets
+        environment: dev
         env:
           GITHUB_CONTEXT: ${{ toJSON(secrets) }}
         run: echo "$GITHUB_CONTEXT"
@@ -33,6 +34,7 @@ jobs:
             ghcr.io/${{ github.repository }}:fake
       
       - name: executing remote ssh commands restart service
+        environment: dev
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_SERVER }}
